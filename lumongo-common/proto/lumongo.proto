@@ -444,10 +444,10 @@ message IndexSegmentResponse {
 }
 
 message QueryRequest {
-	repeated string index = 1;
-	optional Query query = 2;
-	required uint32 amount = 3;
-	repeated Query filterQuery = 4;
+    repeated string index = 1;
+    optional Query query = 2;
+    required uint32 amount = 3;
+    repeated Query filterQuery = 4;
 	optional FacetRequest facetRequest = 5;
 	optional SortRequest sortRequest = 6;
 	optional uint32 start = 7;
@@ -460,6 +460,7 @@ message QueryRequest {
 	repeated HighlightRequest highlightRequest = 14;
 	repeated AnalysisRequest analysisRequest = 15;
 	optional bool debug = 16 [default = false];
+    optional GroupByRequest groupByRequest = 17;
 }
 
 
@@ -469,6 +470,11 @@ message HighlightRequest {
 	optional string postTag = 3 [default = "</em>"];
 	optional uint32 numberOfFragments = 4 [default = 1];
 	optional uint32 fragmentLength = 5 [default = 100];
+}
+
+message GroupByRequest {
+    required string groupField = 1;
+    required FieldSort sort = 2;
 }
 
 message AnalysisRequest {
